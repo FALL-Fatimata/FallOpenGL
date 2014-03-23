@@ -46,6 +46,8 @@ public class NewPong {
 		Display.destroy();
 		
 	  }
+	  
+	  // Initialisation
 	
 	  private void initGL() {
 		
@@ -93,6 +95,7 @@ public class NewPong {
 			super(x,y,width,height);
 		}
 		
+		// dessin de la raquette
 		@Override 
 		
 		public void draw(){
@@ -110,6 +113,7 @@ public class NewPong {
 			super(x,y,width,height);
 		}
 		
+		 // dessin de la balle
 		@Override 
 		
 		public void draw(){
