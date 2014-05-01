@@ -115,8 +115,8 @@ public class Tools  {
 		this.setX(0);
 		this.setY(0);
 //		this.setZ(0);
-		this.setDy(Math.random()*speed);
-		this.setDx(Math.random()*speed);
+		this.setDy(Math.signum(Math.random()-0.5)*(Math.random()*0.5+2*speed));
+		this.setDx(Math.signum(Math.random()-0.5)*(Math.random()*0.5+2*speed));
 //		this.setDz(Math.random()*0.01);
 	}
 

@@ -14,7 +14,9 @@ IGControleurInterface{
 		directionP1=0;
 		directionP2=0;
 		laBalle=new MouvementBalle(balle, decor, raquetteP1, raquetteP2, score,this);
-		lesRaquettes=new MouvementRaquettes(raquetteP1, raquetteP2, decor, directionP1, directionP2);
+		laRaquette1=new MouvementRaquette(raquetteP1, decor, directionP1);
+		laRaquette2=new MouvementRaquette(raquetteP2, decor, directionP2);
+		
 		
 	}
 	
@@ -31,34 +33,31 @@ IGControleurInterface{
 	private Raquette raquetteP2=new Raquette(-(decor.getX()/2), 0,0,100);
 	private Score score=new Score(0,0);
 	private MouvementBalle laBalle;
-	private MouvementRaquettes lesRaquettes;
+	private MouvementRaquette laRaquette1;
+	private MouvementRaquette laRaquette2;
 	public boolean pause=true;
 
 
 	public void mettreEnPause_Reprendre(){
 		this.pause= false;
-		System.out.println("Je mets le jeu en pause");
+		
 	}
 	
 
 	@Override
 	public void setDirectionP1(int direction) {
-		// TODO Auto-generated method stub
-		lesRaquettes.run();
+
+		laRaquette1.setDirection(direction);
+		laRaquette1.run(false);
 		this.directionP1=direction;
-		lesRaquettes.setDirectionP1(direction);
+		
 	}
-	@Override
-	public void setDirectionP2(int direction) {
-		// TODO Auto-generated method stub
-		this.directionP2=direction;
-		lesRaquettes.setDirectionP2(direction);
-	}
+	
 
 
 	@Override
 	public Balle getBalle() {
-		// TODO Auto-generated method stub
+		
 		laBalle.run();
 		if(score.getP1Score()>10 || score.getP2Score()>10){
 			this.mettreEnPause_Reprendre();
@@ -77,7 +76,19 @@ IGControleurInterface{
 
 	@Override
 	public Raquette getRaquetteP2() {
-		// TODO Auto-generated method stub
+		int direction=0;
+		if(Math.random()>0.5){
+			direction=1;
+		}
+		if(raquetteP2.getY()+raquetteP2.getWidth()>=decor.getY()/2){
+			direction=0;
+		}
+		if(raquetteP2.getY()-raquetteP2.getWidth()<=-decor.getY()/2){
+			
+			direction=1;
+		}
+		this.setDirectionP2(direction);
+		laRaquette2.run(true);
 		return this.raquetteP2;
 	}
 
@@ -85,6 +96,12 @@ IGControleurInterface{
 	
 	public void quitter(){
 		
+	}
+
+	@Override
+	public void setDirectionP2(int direction) {
+		// TODO Auto-generated method stub
+		laRaquette2.setDirection(direction);
 	}
 
 	// Il faut rajouter des setters et getters concernant les 4 differents décors et les 4 différents types de raquette

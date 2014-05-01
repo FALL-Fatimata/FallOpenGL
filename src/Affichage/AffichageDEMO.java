@@ -3,6 +3,7 @@ package Affichage;
 import Jeu.Balle;
 import Jeu.Manitou;
 import Jeu.Raquette;
+import moduleIG.ConfigData;
 import moduleIntegration.SetRaquetteDecoGuiAffichage;
 
 public class AffichageDEMO implements SetRaquetteDecoGuiAffichage {
@@ -24,6 +25,12 @@ public class AffichageDEMO implements SetRaquetteDecoGuiAffichage {
 		Balle balle = manitou.getBalle();
 		//System.out.println(balle.getX()+"  "+balle.getY()+"  "+balle.getZ()+"  ");
 		Raquette raquette = manitou.getRaquetteP1();
+		
+	}
+
+	@Override
+	public void traiterDonnees(ConfigData donnees) {
+		// TODO Auto-generated method stub
 		
 	}
 

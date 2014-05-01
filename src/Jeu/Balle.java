@@ -14,8 +14,8 @@ public class Balle extends Tools {
 	}
 	
 	public Balle (double x, double y, double z,int speed, int radius){
-		super(x,y,-1+(Math.random()-0.5)*speed, 1+(Math.random()-0.5)*speed ,speed);
-		System.out.println("La balle est en possition: ("+x+","+y+","+z+") \n Sa vitesse en x est :"+dx);		
+		super(x,y,Math.signum(Math.random()-0.5)*(Math.random()*0.5+2*speed), Math.signum(Math.random()-0.5)*(Math.random()*0.5+2*speed),speed);
+			
 		this.radius=radius;
 	}
 
@@ -24,7 +24,7 @@ public class Balle extends Tools {
 	
 	public boolean staysInTheField(Raquette r) {
 		
-		System.out.println("La position de la balle est : "+y+"celle de la raquette est :"+r.getY()+"Donc la balle reste dans le terrain,"+(Math.abs(r.getY()-this.getY())<r.getWidth()/2));
+		
 		
 		return (Math.abs(r.getY()-this.getY())<r.getWidth()/2);
 	}
