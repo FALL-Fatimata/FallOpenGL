@@ -17,6 +17,10 @@ public class TestDescripteur {
 		
 		Projection descripteur = new Projection(X);
 		vectorOfFeatures = descripteur.Descripteur();
+		
+		for (int i=0; i<vectorOfFeatures.length;i++){
+			System.out.println(vectorOfFeatures[i]);
+		}
 	}
 
 }
