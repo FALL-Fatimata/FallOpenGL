@@ -47,7 +47,7 @@ public class DirectionGiver {
 	public void testManitou(){
 		fenetre.addKeyListener(new monListener());
 		fenetre.setSize(new Dimension(250, 250));
-		fenetre.setLocationRelativeTo(null);
+		fenetre.setLocation(0,0);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
 		

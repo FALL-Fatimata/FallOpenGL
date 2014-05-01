@@ -24,7 +24,7 @@ public class MouvementBalle{
 			balle.move();
 //			System.out.println(balle.toString());
 			if (balle.isAtLimitsY(decor)){
-				System.out.println("J'ai vu que j'étais à la limite");
+		
 				
 				decor.Rebond(balle);
 			}

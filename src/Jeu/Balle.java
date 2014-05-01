@@ -14,7 +14,7 @@ public class Balle extends Tools {
 	}
 	
 	public Balle (double x, double y, double z,int speed, int radius){
-		super(x,y,1+(Math.random()-0.5)*speed, 1+(Math.random()-0.5)*speed ,speed);
+		super(x,y,-1+(Math.random()-0.5)*speed, 1+(Math.random()-0.5)*speed ,speed);
 		System.out.println("La balle est en possition: ("+x+","+y+","+z+") \n Sa vitesse en x est :"+dx);		
 		this.radius=radius;
 	}

@@ -22,7 +22,7 @@ IGControleurInterface{
 		this.speed=donnees.difficulte;
 	}
 	
-	private TableDePingPong decor=new TableDePingPong(400,400,0);
+	private TableDePingPong decor=new TableDePingPong(680,400,0);
 	private int speed=1;
 	private int directionP1;
 	private int directionP2;
