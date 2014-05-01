@@ -25,7 +25,7 @@ public class MouvementRaquettes  {
 		this.j2=direction;
 	}
 	public void run(){
-		raquetteP1.setDy(2*j1-1);
+		raquetteP1.setDy(4*(2*j1-1));
 		raquetteP2.setDy(2*j2-1);
 		raquetteP1.move();
 		raquetteP2.move();

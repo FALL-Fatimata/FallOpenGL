@@ -23,12 +23,12 @@ public class TableDePingPong {
 			b.setDy(-dy);
 			
 		}
-		if (b.isAtLimitsZ(this))
-		{
-			
-			double dz = b.getDz();
-			b.setDz(-dz);
-		}
+//		if (b.isAtLimitsZ(this))
+//		{
+//			
+//			double dz = b.getDz();
+//			b.setDz(-dz);
+//		}
 		
 	}
 

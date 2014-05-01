@@ -42,11 +42,11 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	GregorianCalendar calendar = new GregorianCalendar();
 	Date time  = calendar.getTime();
 	public static final int WIDTH=640, HEIGHT=480;
-	private boolean isRunning=true;
+	private boolean isRunning;
 	private long lastFrame;
 	
-	private TableDePingPong decor=new TableDePingPong(10,6,0);
-	private int speed=1;
+
+
 	
 	
 	private float zTranslation = -2f;
@@ -78,6 +78,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		raquette2Tex= new Texture(0, 0, 0);
 
 	    manitou = le_manitou;
+	    isRunning = manitou.pause;
 		
 		setRaquette(1);
 		setDeco(1);
@@ -210,9 +211,9 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		
 		
 		 // nom_texture_raquette = "C:/Users/FATIMATA/workspace/PACT3.2/";
-		  if (choixRaquette==2) nom_texture_raquette = "raquetteSport.jpg"; 
+		  if (choixRaquette==2) nom_texture_raquette = "/ImagesGUI/raquetteSport.jpg"; 
 		  if (choixRaquette==1) nom_texture_raquette = "/ImagesGUI/banane.jpg";
-		  if (choixRaquette==3) nom_texture_raquette = "requin.jpg";
+		  if (choixRaquette==3) nom_texture_raquette = "/ImagesGUI/requin.jpg";
 		
 	 }
 	  // Le rendu � ma fen�tre de jeu
@@ -226,7 +227,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		
 			//  render de l'arriere-plan
 			
-			arriereplanVBO.render(100,100, 0);
+			arriereplanVBO.render(100,100);
 
 			//  render de la raquette
 		
@@ -234,10 +235,10 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 			Raquette raquetteP2 = manitou.getRaquetteP2();
 			Balle balle = manitou.getBalle();
 			
-			raquette1VBO.render(raquetteP1.getX()-150, raquetteP1.getY(), raquetteP1.getZ());
-			raquette2VBO.render(raquetteP2.getX()+450, raquetteP2.getY(), raquetteP2.getZ());
+			raquette1VBO.render(-raquetteP1.getX()+40, -(raquetteP1.getY()));
+			raquette2VBO.render(-raquetteP2.getX()+260, -(raquetteP2.getY()));
 	  
-	        balleVBO.render(balle.getX(), balle.getY(), balle.getZ());
+	        balleVBO.render(-(balle.getX()+5), -(balle.getY()));
 			
 			
 //			glColor3f(1.0f, 0.0f, 1.0f);
@@ -253,9 +254,9 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		
 		//l� il doit prendre l'image du d�co et le mettre dans l'ecran
 		
-	 	if (choixDeco==3) nom_texture_deco = "ocean.jpg";
+	 	if (choixDeco==3) nom_texture_deco = "/ImagesGUI/ocean.jpg";
 		if (choixDeco==1) nom_texture_deco = "/ImagesGUI/jungle.jpg";
-		if (choixDeco==2) nom_texture_deco = "newYork.jpg";
+		if (choixDeco==2) nom_texture_deco = "/ImagesGUI/newYork.jpg";
 		
 	
 	 }

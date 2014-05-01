@@ -13,7 +13,7 @@ IGControleurInterface{
 		// TODO Auto-generated constructor stub
 		directionP1=0;
 		directionP2=0;
-		laBalle=new MouvementBalle(balle, decor, raquetteP1, raquetteP2, score);
+		laBalle=new MouvementBalle(balle, decor, raquetteP1, raquetteP2, score,this);
 		lesRaquettes=new MouvementRaquettes(raquetteP1, raquetteP2, decor, directionP1, directionP2);
 		
 	}
@@ -22,21 +22,21 @@ IGControleurInterface{
 		this.speed=donnees.difficulte;
 	}
 	
-	private TableDePingPong decor=new TableDePingPong(400,300,0);
+	private TableDePingPong decor=new TableDePingPong(400,400,0);
 	private int speed=1;
 	private int directionP1;
 	private int directionP2;
-	private Balle balle = new Balle(decor.getX()/2,0,0,0,0,0,1);
-	private Raquette raquetteP1=new Raquette((decor.getX()/2), 0,0,0,2);
-	private Raquette raquetteP2=new Raquette(-(decor.getX()/2), 0,0,0,1);
+	private Balle balle = new Balle(0,0,0,speed,1);
+	private Raquette raquetteP1=new Raquette((decor.getX()/2), 0,0,100);
+	private Raquette raquetteP2=new Raquette(-(decor.getX()/2), 0,0,100);
 	private Score score=new Score(0,0);
 	private MouvementBalle laBalle;
 	private MouvementRaquettes lesRaquettes;
-	private boolean pause;
+	public boolean pause=true;
 
 
 	public void mettreEnPause_Reprendre(){
-		this.pause= !pause;
+		this.pause= false;
 		System.out.println("Je mets le jeu en pause");
 	}
 	
@@ -60,7 +60,12 @@ IGControleurInterface{
 	public Balle getBalle() {
 		// TODO Auto-generated method stub
 		laBalle.run();
+		if(score.getP1Score()>10 || score.getP2Score()>10){
+			this.mettreEnPause_Reprendre();
+		
+		}
 		return this.balle;
+		
 	}
 
 	@Override

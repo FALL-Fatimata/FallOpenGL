@@ -4,8 +4,8 @@ public class Raquette extends Tools {
 	
 
 	private double width;
-	public Raquette(double x, double y, double z, double dy, double raquette_width) {
-		super(x, y, z, 0,dy, 0);
+	public Raquette(double x, double y, double dy, double raquette_width) {
+		super(x, y,  0,dy,1);
 		//this.width=width;
 		
 	     width = (int) raquette_width;
@@ -14,7 +14,7 @@ public class Raquette extends Tools {
 
 	
 	public void Rebond(Balle b) {
-		// TODO Auto-generated method stub
+
 		//a modifier
 //		System.out.println("Il y a des rebonds");
 		double dx = b.getDx();

@@ -72,12 +72,12 @@ public class TexturedVBO
     }
     
    
-    public void render_vbo(double x, double y,double z)
+    public void render_vbo(double x, double y)
     {
         glPushMatrix();
         {
             // Translate to location
-            glTranslated(x, y, z);
+            glTranslated(x, y, 0);
             
             glEnable(GL_TEXTURE_2D);
             // Bind the texture
@@ -106,12 +106,12 @@ public class TexturedVBO
         glPopMatrix();
     }
     
-    public void render(double x, double y,double z)
+    public void render(double x, double y)
     {
         glPushMatrix();
         {
             // Translate to location
-            glTranslated(x+200, y+200, z);
+            glTranslated(x+200, y+200, 0);
             
             glEnable(GL_TEXTURE_2D);
             // Bind the texture
