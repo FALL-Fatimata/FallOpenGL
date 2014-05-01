@@ -6,16 +6,21 @@ public class Projection {
 
 	private Matrix X;
 	private Matrix W;
+	int k= 2;				// a modifier
 
-	public Projection(Matrix X, Matrix W) {
+	public Projection(Matrix X) {
 		this.X = X;
-		this.W = W;
 	}
 
 	// Attention à la dimension de X, il doit avoir un nombre pair de colonne
 
-	public Matrix MatriceRedimensionnee(int k) {
-
+	
+	public Matrix MatriceRedimensionnee() {
+		
+		MatriceProjection matriceProjection = new MatriceProjection();
+		W = matriceProjection.Apprentissage();
+		
+		
 		Matrix M = new Matrix(2 * k, W.getColumnDimension());
 
 		for (int j = 0; j < M.getColumnDimension(); j++) {
@@ -35,17 +40,23 @@ public class Projection {
 		return (M);
 	}
 
-	public Matrix Descripteur(int k) {
+	public double[] Descripteur() {
 
-		Matrix S;
+		Matrix Z;
 		Matrix Xd;
 
 	
-		S = this.MatriceRedimensionnee(k).times(X);
-		Mediane Me = new Mediane(S);
+		Z = this.MatriceRedimensionnee().times(X);
+		Mediane Me = new Mediane(Z);
 		Xd = Me.GetMediane();
 
-		return (Xd);
+		double[] VectorOfFeature = new double[Xd.getRowDimension()];
+
+		for (int i = 0; i < Xd.getRowDimension(); i++) {
+			VectorOfFeature[i] = Xd.get(i, 1);
+		}
+
+		return (VectorOfFeature);
 
 	}
 
