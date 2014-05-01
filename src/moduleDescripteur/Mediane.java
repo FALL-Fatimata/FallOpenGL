@@ -1,4 +1,4 @@
-package moduleDescripteurPAN4;
+package moduleDescripteur;
 import Jama.Matrix;
 import java.util.Arrays;
 
@@ -42,7 +42,13 @@ public class Mediane {
 			}
 		}
 		
+		Matrix Ma = new Matrix(Middle,1);
 		
+		
+		
+		
+		
+		/*
 		//On retire cette médiane à chaque élément de chaque ligne
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < T; j++) {
@@ -50,6 +56,13 @@ public class Mediane {
 			}
 		
 		}
+		*/
+		
+		
+		
+		
+		
+		/*
 		
 		// Calcul de la médiane de la matrice
 		
@@ -80,8 +93,8 @@ public class Mediane {
 			
 			}
 		
+		*/
 		
-		
-		return (M);
+		return (Ma);
 	}
 }
