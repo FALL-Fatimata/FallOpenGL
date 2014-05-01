@@ -2,6 +2,7 @@ package moduleIG;
 
 import Affichage.Affichage;
 import Jeu.Manitou;
+import Testeurs.TestThread1;
 
 public class MainTestIG {
 
@@ -16,6 +17,10 @@ public class MainTestIG {
 		Manitou manitou= new Manitou();
 		
 		Affichage pong = new Affichage(manitou);
+		
+		TestThread1 t1= new TestThread1(manitou);
+		
+		t1.run();
 		FenetreDemarrage window = new FenetreDemarrage(manitou,pong);
 		window.show();
 

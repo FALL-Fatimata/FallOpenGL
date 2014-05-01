@@ -11,13 +11,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Affichage.Affichage;
 import Jeu.Manitou;
-import Testeurs.TestThread1;
 import Testeurs.TestThread2;
 
 public class FenetreDemarrage {
 
 	private  JFrame fenetre=new JFrame("Menu Principal- MENTAL PONG");
 	private Manitou manitou;
+	
+	private TestThread2 t2;
 	private ConfigData donnees=new ConfigData();
 	private  JPanel panneauPrinc=(JPanel) this.fenetre.getContentPane();
 	private FenetreConfig configurations = new FenetreConfig(this);
@@ -33,6 +34,8 @@ public class FenetreDemarrage {
 	public FenetreDemarrage(Manitou manitou,Affichage pong){
 		this.manitou=manitou;
 			this.pong=pong;
+			
+			t2 = new TestThread2(pong);
 
 	}
 
@@ -42,10 +45,9 @@ public class FenetreDemarrage {
 
 		jouer.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				TestThread1 t1 = new TestThread1(manitou);
-				TestThread2 t2 = new TestThread2(pong);
-				t1.run();
-				t2.run();
+				
+				
+				pong.play();
 				close();
 				FenetreFin window = new FenetreFin(manitou,donnees);
 				window.show();

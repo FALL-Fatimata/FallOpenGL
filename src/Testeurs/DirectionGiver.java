@@ -24,6 +24,7 @@ private Manitou manitou=new Manitou();
 		
 			if (e.getKeyCode()==KeyEvent.VK_DOWN){
 				manitou.setDirectionP1(0);
+				
 			
 			}
 			if(e.getKeyCode()==KeyEvent.VK_UP){
