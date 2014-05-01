@@ -1,4 +1,4 @@
-package moduleDescripteurPAN4;
+package moduleDescripteur;
 
 import Jama.Matrix;
 
