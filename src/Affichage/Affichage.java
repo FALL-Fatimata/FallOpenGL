@@ -42,7 +42,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	GregorianCalendar calendar = new GregorianCalendar();
 	Date time  = calendar.getTime();
 	public static final int WIDTH=640, HEIGHT=480;
-	private boolean isRunning;
+	
 	private long lastFrame;
 	
 
@@ -78,7 +78,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		raquette2Tex= new Texture(0, 0, 0);
 
 	    manitou = le_manitou;
-	    isRunning = manitou.pause;
+	  
 		
 		setRaquette(1);
 		setDeco(1);
@@ -272,15 +272,15 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	 	public void play(){
 	 		setDisplay();
 	 		initGL();
-	 		while(isRunning){
+	 		while(manitou.pause){
 	 			
-				
+				System.out.println(manitou.pause);
 				render();
 				Display.update();
 			
 				if(Display.isCloseRequested()){
 					
-					isRunning=false;
+					manitou.pause=false;
 				}
 				try {
 					Thread.sleep(17);

@@ -10,7 +10,7 @@ import Jeu.Manitou;
 
 public class DirectionGiver {
 
-	private Manitou manitou=new Manitou();
+private Manitou manitou=new Manitou();
 	private JFrame fenetre = new JFrame("Test");
 	public DirectionGiver(final Manitou manitou){
 		this.manitou=manitou;		

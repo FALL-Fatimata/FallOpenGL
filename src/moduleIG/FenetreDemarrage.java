@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Affichage.Affichage;
 import Jeu.Manitou;
+import Testeurs.TestThread1;
+import Testeurs.TestThread2;
 
 public class FenetreDemarrage {
 
@@ -40,9 +42,10 @@ public class FenetreDemarrage {
 
 		jouer.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				FenetreJeu fenetre =new FenetreJeu(manitou);
-				fenetre.show();
-				pong.play();
+				TestThread1 t1 = new TestThread1(manitou);
+				TestThread2 t2 = new TestThread2(pong);
+				t1.run();
+				t2.run();
 				close();
 				FenetreFin window = new FenetreFin(manitou,donnees);
 				window.show();

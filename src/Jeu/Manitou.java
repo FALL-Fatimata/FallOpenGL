@@ -59,7 +59,7 @@ IGControleurInterface{
 	public Balle getBalle() {
 		
 		laBalle.run();
-		if(score.getP1Score()>10 || score.getP2Score()>10){
+		if(score.getP1Score()>2 || score.getP2Score()>2){
 			this.mettreEnPause_Reprendre();
 		
 		}
