@@ -22,11 +22,11 @@ IGControleurInterface{
 		this.speed=donnees.difficulte;
 	}
 	
-	private TableDePingPong decor=new TableDePingPong(10,20,0);
+	private TableDePingPong decor=new TableDePingPong(400,300,0);
 	private int speed=1;
 	private int directionP1;
 	private int directionP2;
-	private Balle balle = new Balle(150,0,0,0,0,speed,1);
+	private Balle balle = new Balle(decor.getX()/2,0,0,0,0,0,1);
 	private Raquette raquetteP1=new Raquette((decor.getX()/2), 0,0,0,2);
 	private Raquette raquetteP2=new Raquette(-(decor.getX()/2), 0,0,0,1);
 	private Score score=new Score(0,0);
