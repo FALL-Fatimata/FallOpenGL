@@ -2,20 +2,22 @@ package moduleClassif;
 
 public class AdaboostTraining {
 
-	int rows =12;  
+	int rows =14;  
 	int columns = 20;
 	int nbrWClassifier = 100;
-	double[][] MatrixOfFeatures = new double[rows][columns]; // I= columns
+	double[][] MatrixOfFeatures = new double[rows][columns]; 
 	int[] labels = new int[rows];
-	double[] modelh = new double[5];
-	double[][] modelH = new double[6][nbrWClassifier];//contient les valeurs de modelh + alphar ; chaque colonne pour un classifieur faible
-	double[] weight1 = new double[rows];
+	double[] weight = new double[rows];
+	
+	double[] modelh = new double[4];
+	double[][] modelH = new double[5][nbrWClassifier];//contient les valeurs de modelh + alphar ; chaque colonne pour un classifieur faible  
 	
 	double error;
 	double betar, alphar;
+	double[] nouveauxPoids = new double[rows];
 	int valeur;
 
-	public AdaboostTraining(double[][]MatrixOfFeatures, int[] labels){ //, double[] modelh
+	public AdaboostTraining(double[][]MatrixOfFeatures, int[] labels){ 
 		this.MatrixOfFeatures= MatrixOfFeatures;
 		this.labels = labels;
 	}
@@ -23,76 +25,79 @@ public class AdaboostTraining {
 	public double[][] adaboostTraining(){
 
 		//Initialisation des poids
-		for(int i=0;i<rows;i++){ //I
-			this.weight1[i] = 1.0/columns;
+		for(int i=0;i<weight.length;i++){ 
+			this.weight[i] = 1.0/columns;
 		}
-
 		
-		
+		//generation de nbrWClassifier classifieurs
 		for(int r=0;r<nbrWClassifier;r++){
+			
 			//faire la somme des poids
-			double sommePoids= weight1[0];
+			double sommePoids= weight[0];
 			for(int j=1; j<rows;j++){ //I
-				sommePoids+= weight1[j];
+				sommePoids= sommePoids+weight[j];
 			}
 
 			//normalisation
 			for(int i=0;i<rows;i++){
-				this.weight1[i]=weight1[i]/sommePoids;
+				weight[i]=weight[i]/sommePoids;
 			}
 
-			//entrainer le classifieur hr
-			WeakClassifiers weakClassifier = new WeakClassifiers(MatrixOfFeatures, labels, weight1);
-			this.modelh= weakClassifier.Classifiers(); // sauvegarder ces 100 modèles h ? 
-			for(int i=0;i<modelH.length-1;i++){
+			//entrainer le classifieur hr (generation de classifieur faibles)
+			
+			WeakClassifiers weakClassifier = new WeakClassifiers(MatrixOfFeatures, labels, weight);
+			
+			this.modelh= weakClassifier.Classifiers(); 
+			
+			for(int i=0;i<modelH.length-1;i++){ // -1 parceque la derniere ligne est pour le alphar
 				this.modelH[i][r] = modelh[i]; 
 			}
 
-			error =modelh[1];
+			error = modelh[1];
 			betar= error/(1-error);
 
 			//coef associé à hr
-			alphar=Math.log(1/betar);
-			this.modelH[5][r] = alphar;
+			alphar=Math.log(1/(Math.abs(betar)));
+			
+			this.modelH[4][r] = alphar;
 
 			// modifier les poids
+			this.weight = changerPoids(MatrixOfFeatures, labels, modelh, weight);
 
-			int retourI = indicatrice(MatrixOfFeatures,labels,modelh);
-
-			if(retourI == 1){
-				for(int i =0; i<weight1.length;i++){
-					this.weight1[i] = weight1[i]*betar;		//on n'a pas besoin de sauver les anciens poids ==> tableau a n dimensions
-				}
-			}
 		}
 
 		return modelH;
 	}
+	
+	public double[] changerPoids(double[][] MatrixOfFeatures, int labels[], double[] modelh, double[] weight){
+		
+		double[] X = new double[MatrixOfFeatures[0].length];
+		
+		for(int j = 0; j<MatrixOfFeatures.length; j++ ){
+			for (int h = 0; h<MatrixOfFeatures[0].length; h++){
+				X[h] = MatrixOfFeatures[j][h]; 			//prendre la ligne j de la matrice
+			}
+		
+			int indiceFeature=(int)modelh[0];
+			double valeurThreshold = X[indiceFeature];
+			int label;
 
-	public int indicatrice(double[][] Xi, int[] labels, double[] modelh){
-
-		int indiceFeature=(int)modelh[0];
-		int indiceThreshold = (int)modelh[4];
-		double threshold = Xi[indiceThreshold][indiceFeature];
-		int label;
-
-		if(threshold <= modelh[3]){
-			label = -(int)modelh[2];
+			if(valeurThreshold <= modelh[3]){
+				label = -(int)modelh[2];
+			}
+			else {
+				label = (int)modelh[2];
+			}
+			
+			//si bien classe changer poids 
+			if(label==labels[j]){
+				this.nouveauxPoids[j] = weight[j]*betar;
+			}
+			else{
+				this.nouveauxPoids[j] = weight[j];
+			}
 		}
-		else 
-			label = (int)modelh[2];
-
-		if(label==labels[indiceThreshold]){
-			return 1;
-		}
-		else 
-			return 0;
+		
+		return nouveauxPoids;
 	}
-
-	public int predictWeakClassifier(double[][] MatrixOfFeatures, int labels){
-
-
-		return 1; //ou 0
-	}
-
 }
