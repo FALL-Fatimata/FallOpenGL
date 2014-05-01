@@ -25,11 +25,14 @@ public class Test {
 		W = Ma.Projection();
 		Projection Po = new Projection(W, X);
 		Final = Po.Descripteur(k);
-		for (int i = 0; i < k; i++) {
+
+		/* for (int i = 0; i < k; i++) {
 			for (int j = 0; j < k; j++) {
 				System.out.println(Final.get(i, j));
 			}
-		}
+		} */
+		
+		
 	}
 
 }
