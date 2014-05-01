@@ -4,7 +4,6 @@ package Testeurs;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.JFrame;
 import Jeu.Manitou;
 
@@ -12,9 +11,10 @@ public class DirectionGiver {
 
 private Manitou manitou=new Manitou();
 	private JFrame fenetre = new JFrame("Test");
+	
 	public DirectionGiver(final Manitou manitou){
-		this.manitou=manitou;		
-			}
+		this.manitou=manitou;	
+	}
 	
 	class monListener implements KeyListener{
 
