@@ -1,11 +1,15 @@
 package moduleIntegration;
 
-//cet interface implémentée dans Affichage permettra à GUI d'envoyer la déco et la raquette choisis à Affichage
+import moduleIG.ConfigData;
+
+//cet interface implï¿½mentï¿½e dans Affichage permettra ï¿½ GUI d'envoyer la dï¿½co et la raquette choisis ï¿½ Affichage
 
 public interface SetRaquetteDecoGuiAffichage {
 	
 	void setRaquette(int choixRaquette);
 	void setDeco(int choixDeco);
+	
+	void traiterDonnees(ConfigData donnees);
 
 }
 

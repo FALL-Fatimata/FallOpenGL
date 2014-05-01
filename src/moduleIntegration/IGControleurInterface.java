@@ -1,5 +1,7 @@
 package moduleIntegration;
 
+import moduleIG.ConfigData;
+
 public interface IGControleurInterface {
 	
 	
@@ -11,6 +13,7 @@ public interface IGControleurInterface {
 	
 	void mettreEnPause_Reprendre();
 
+	void traiterDonnees(ConfigData donnees);
 	
 	
 

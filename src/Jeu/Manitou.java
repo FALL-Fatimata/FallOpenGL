@@ -44,6 +44,7 @@ IGControleurInterface{
 	@Override
 	public void setDirectionP1(int direction) {
 		// TODO Auto-generated method stub
+		lesRaquettes.run();
 		this.directionP1=direction;
 		lesRaquettes.setDirectionP1(direction);
 	}
@@ -65,7 +66,7 @@ IGControleurInterface{
 	@Override
 	public Raquette getRaquetteP1() {
 		// TODO Auto-generated method stub
-		lesRaquettes.run();
+
 		return this.raquetteP1;
 	}
 

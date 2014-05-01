@@ -38,7 +38,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
 	private String chemin = "data\\ReproductionEXEC";
 	private String message = "";
-	private String nom_texture_deco="jungle.jpg", nom_texture_raquette="banane.jpg",nom_texture_balle="ball.png";
+	private String nom_texture_deco="/ImagesGUI/jungle.jpg", nom_texture_raquette="/ImagesGUI/banane.jpg",nom_texture_balle="/Images/ball.png";
 	GregorianCalendar calendar = new GregorianCalendar();
 	Date time  = calendar.getTime();
 	public static final int WIDTH=640, HEIGHT=480;
@@ -72,6 +72,10 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
 
 	public Affichage(Manitou le_manitou){
+		
+		balleTex= new Texture(0,0,0);
+		raquette1Tex = new Texture(0, 0, 0);
+		raquette2Tex= new Texture(0, 0, 0);
 
 	    manitou = le_manitou;
 		
@@ -160,10 +164,11 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		// Chargement des textures
 		
 		
-		raquette1Tex = Texture.loadTexture(nom_texture_raquette);
-		raquette2Tex = Texture.loadTexture(nom_texture_raquette);
-		balleTex = Texture.loadTexture(nom_texture_balle);
+		
+		raquette2Tex=raquette2Tex.loadTexture(nom_texture_raquette);
+		balleTex=balleTex.loadTexture(nom_texture_balle);
 
+		raquette1Tex=raquette1Tex.loadTexture(nom_texture_raquette);
 		// Creation des VBOs
 	
 		raquette1VBO = TexturedVBO.loadTexturedVBO(raquette1Tex);
@@ -171,10 +176,11 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		balleVBO = TexturedVBO.loadTexturedVBO(balleTex);
 		//Chargement del'arriere-plan et redimensionnement du VBO
 		
-		Texture arriereplan = Texture.loadTexture(nom_texture_deco);
+		Texture arriereplan=new Texture(0, 0, 0) ;
+		arriereplan=arriereplan.loadTexture(nom_texture_deco);
 		arriereplanVBO = TexturedVBO.loadTexturedVBO(arriereplan);
-		arriereplan.width = 640;
-		arriereplan.height =480;
+		arriereplan.width = 815;
+		arriereplan.height =600;
 
 
 		
@@ -205,7 +211,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		
 		 // nom_texture_raquette = "C:/Users/FATIMATA/workspace/PACT3.2/";
 		  if (choixRaquette==2) nom_texture_raquette = "raquetteSport.jpg"; 
-		  if (choixRaquette==1) nom_texture_raquette = "banane.jpg";
+		  if (choixRaquette==1) nom_texture_raquette = "/ImagesGUI/banane.jpg";
 		  if (choixRaquette==3) nom_texture_raquette = "requin.jpg";
 		
 	 }
@@ -248,7 +254,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		//l� il doit prendre l'image du d�co et le mettre dans l'ecran
 		
 	 	if (choixDeco==3) nom_texture_deco = "ocean.jpg";
-		if (choixDeco==1) nom_texture_deco = "jungle.jpg";
+		if (choixDeco==1) nom_texture_deco = "/ImagesGUI/jungle.jpg";
 		if (choixDeco==2) nom_texture_deco = "newYork.jpg";
 		
 	
@@ -274,6 +280,12 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 				if(Display.isCloseRequested()){
 					
 					isRunning=false;
+				}
+				try {
+					Thread.sleep(17);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				
 			}
