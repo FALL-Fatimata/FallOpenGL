@@ -1,8 +1,7 @@
 package Affichage;
 
 import Jeu.Manitou;
-import Testeurs.TestThread1;
-import Testeurs.TestThread2;
+import Testeurs.DirectionGiver;
 
 public class TESTAffichage {
 	
@@ -12,10 +11,11 @@ public class TESTAffichage {
 		// TODO Auto-generated method stub
 		
 		Manitou manitou = new Manitou();
-		TestThread1 t1 = new TestThread1(manitou);
-		TestThread2 t2 = new TestThread2(manitou);
-		t1.run();
-		t2.run();
+		Affichage pong = new Affichage(manitou);
+		DirectionGiver testeur = new DirectionGiver(manitou);
+		testeur.testManitou();
+		pong.play();
+		
 		
 
 	}

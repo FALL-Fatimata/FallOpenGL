@@ -11,8 +11,7 @@ import javax.swing.JPanel;
 
 import Affichage.Affichage;
 import Jeu.Manitou;
-import Testeurs.TestThread1;
-import Testeurs.TestThread2;
+import Testeurs.DirectionGiver;
 
 public class FenetreFin {
 
@@ -43,10 +42,9 @@ public class FenetreFin {
 		boutonRejouer.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				pong.traiterDonnees(donnees);
-				TestThread1 t1 = new TestThread1(manitou);
-				TestThread2 t2 = new TestThread2(pong);
-				t1.run();
-				t2.run();
+				DirectionGiver testeur = new DirectionGiver(manitou);
+				testeur.testManitou();
+				pong.play();
 				close();
 				FenetreFin window = new FenetreFin(manitou,donnees);
 				window.show();

@@ -45,11 +45,11 @@ public class FenetreDemarrage {
 
 		jouer.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				
+				close();
 				DirectionGiver testeur = new DirectionGiver(manitou);
 				testeur.testManitou();
 				pong.play();
-				close();
+				
 				FenetreFin window = new FenetreFin(manitou,donnees);
 				window.show();
 				
