@@ -21,10 +21,10 @@ private Manitou manitou=new Manitou();
 		@Override
 		public void keyPressed(KeyEvent e) {
 	
-			
+		
 			if (e.getKeyCode()==KeyEvent.VK_DOWN){
 				manitou.setDirectionP1(0);
-				
+			
 			}
 			if(e.getKeyCode()==KeyEvent.VK_UP){
 				manitou.setDirectionP1(1);
@@ -47,7 +47,7 @@ private Manitou manitou=new Manitou();
 	public void testManitou(){
 		fenetre.addKeyListener(new monListener());
 		fenetre.setSize(new Dimension(250, 250));
-		fenetre.setLocation(0,0);
+		fenetre.setLocation(0,60);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
 		

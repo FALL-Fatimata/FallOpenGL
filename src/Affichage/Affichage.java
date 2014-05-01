@@ -274,7 +274,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	 		initGL();
 	 		while(manitou.pause){
 	 			
-				System.out.println(manitou.pause);
+			
 				render();
 				Display.update();
 			
