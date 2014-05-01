@@ -1,4 +1,4 @@
-package moduleDescripteur;
+package Jama;
 import Jama.util.*;
 
    /** Singular Value Decomposition.

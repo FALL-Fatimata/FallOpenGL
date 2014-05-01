@@ -1,4 +1,4 @@
-package moduleDescripteur;
+package Jama;
 
    /** LU Decomposition.
    <P>

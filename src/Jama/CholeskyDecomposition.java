@@ -1,4 +1,4 @@
-package moduleDescripteur;
+package Jama;
 
    /** Cholesky Decomposition.
    <P>
