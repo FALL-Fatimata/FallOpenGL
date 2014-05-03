@@ -21,6 +21,7 @@ public class Texture
 
 	public int height;
 
+	
 
 	public Texture(int id, int width, int height)
 	{

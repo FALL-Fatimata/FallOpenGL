@@ -13,6 +13,7 @@ public class AffichageDEMO implements SetRaquetteDecoGuiAffichage {
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 	@Override
 	public void setDeco(int choixDeco) {

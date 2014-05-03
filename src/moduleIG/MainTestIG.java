@@ -25,5 +25,6 @@ public class MainTestIG {
 		FenetreDemarrage window = new FenetreDemarrage(manitou,pong);
 		window.show();
 
+		
 	}
 }

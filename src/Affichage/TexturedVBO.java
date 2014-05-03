@@ -76,6 +76,7 @@ public class TexturedVBO
     {
         glPushMatrix();
         {
+        	
             // Translate to location
             glTranslated(x, y, 0);
             

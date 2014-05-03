@@ -17,7 +17,6 @@ IGControleurInterface{
 		laRaquette1=new MouvementRaquette(raquetteP1, decor, directionP1);
 		laRaquette2=new MouvementRaquette(raquetteP2, decor, directionP2);
 		
-		
 	}
 	
 	public void traiterDonnees(ConfigData donnees){

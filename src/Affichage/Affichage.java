@@ -162,6 +162,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);			
 
 
+		
 		// Chargement des textures
 		
 		
